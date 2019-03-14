@@ -6,7 +6,7 @@ const router = express.Router();
  * Get all of the items on the shelf
  */
 router.get('/', (req, res) => {
-    const queryText = `SELECT "description", "image_url" FROM "item";`
+    const queryText = `SELECT "item"."description", "item"."image_url", "item"."id", "user"."id" as "user_id" FROM "item" JOIN "user" ON "user"."id" = "item"."user_id";`
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
