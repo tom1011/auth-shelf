@@ -1,8 +1,9 @@
-import { all } from 'redux-saga/effects';
+import { all, takeEvery } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import getshelfSaga from './getshelfSaga';
+import postshelfSaga from './postShelfSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -16,6 +17,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    getshelfSaga(),
+    takeEvery('GET_SHELF_INFORMATION', getshelfSaga),
+    takeEvery('POST_SHELF_INFORMATION', postshelfSaga),
   ]);
 }
