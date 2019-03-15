@@ -12,7 +12,7 @@ class ViewShelfItem extends Component {
         return (
             <tr value={this.props.item.id}>
                 <td>{this.props.item.description}</td>
-                <td>{this.props.item.image_url}</td>
+                <td><img src={this.props.item.image_url} /></td>
                 <td><button onClick={this.handleDelete(this.props.item.id)}>Delete</button></td>
             </tr>
         )
