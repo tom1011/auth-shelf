@@ -58,7 +58,7 @@ class ViewShelfList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.shelfInfo.map(item => <ViewShelfItem item={item} />)}
+                        {this.props.shelfInfo.map(item => <ViewShelfItem item={item} key={item.id} />)}
                     </tbody>
                 </table>
             </div>
