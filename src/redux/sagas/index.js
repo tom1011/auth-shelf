@@ -4,6 +4,7 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import getshelfSaga from './getshelfSaga';
 import postshelfSaga from './postShelfSaga';
+import deleteShelfSaga from './deleteShelfItem';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     userSaga(),
     takeEvery('GET_SHELF_INFORMATION', getshelfSaga),
     takeEvery('POST_SHELF_INFORMATION', postshelfSaga),
+    takeEvery('DELETE_SHELF_INFORMATION', deleteShelfSaga),
   ]);
 }

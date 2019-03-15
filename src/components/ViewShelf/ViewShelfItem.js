@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class ViewShelfItem extends Component {
+
+    handleDelete = (id) => () => {
+        console.log('key:', id)
+        this.props.dispatch({ type: 'DELETE_SHELF_INFORMATION', payload: id})
+    };
+
     render() {
         return (
-            <tr key={this.props.item.id}>
+            <tr value={this.props.item.id}>
                 <td>{this.props.item.description}</td>
-                <td>{this.props.item.image_url}</td>
-                <td><button>Delete</button></td>
+                <td><img src={this.props.item.image_url} /></td>
+                <td><button onClick={this.handleDelete(this.props.item.id)}>Delete</button></td>
             </tr>
         )
     };
