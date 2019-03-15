@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 class ViewShelfItem extends Component {
     render() {
         return (
-            <div>
-                <h2>Shelf Item</h2>
-                {/* item goes here. */}
-            </div>
+            <tr key={this.props.item.id}>
+                <td>{this.props.item.description}</td>
+                <td>{this.props.item.image_url}</td>
+                <td><button>Delete</button></td>
+            </tr>
         )
     };
 };

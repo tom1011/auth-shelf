@@ -10,6 +10,15 @@ class ViewShelfList extends Component {
         },
     }
 
+    componentDidMount() {
+        this.getShelf();
+    }
+
+    getShelf = () => {
+        console.log('in getShelf');
+        this.props.dispatch({ type: 'GET_SHELF_INFORMATION'});
+    }
+
     addShelfItem = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'POST_SHELF_INFORMATION', payload: this.state.selfItem})
@@ -39,8 +48,18 @@ class ViewShelfList extends Component {
                     <input type="submit"></input>
                 </form>
                 <h1>Shelf List</h1>
-                <ViewShelfItem />
-                {/* map function goes here. */}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.shelfInfo.map(item => <ViewShelfItem item={item} />)}
+                    </tbody>
+                </table>
             </div>
         )
     };
