@@ -21,13 +21,13 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
     const updatedshelf = req.body;
-    const queryText = `INSERT INTO "item" ("description", "image_url") VALUES ($1, $2);`
+    const queryText = `INSERT INTO "item" ("description", "image_url", "user_id") VALUES ($1, $2, $3);`
     const queryValues = [updatedshelf.description,
-        updatedshelf.image_url]
+        updatedshelf.image_url, updatedshelf.user_id]
         pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(200); })
         .catch((err) => {
-        console.log('Error completing SELECT shelf query', err);
+        console.log('Error completing POST shelf query', err);
         res.sendStatus(500);
     });
 });

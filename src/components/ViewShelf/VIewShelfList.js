@@ -7,6 +7,7 @@ class ViewShelfList extends Component {
         shelfItem: {
             description: '',
             image_url: '',
+            user_id: this.props.user.id,
         },
     }
 
@@ -21,7 +22,7 @@ class ViewShelfList extends Component {
 
     addShelfItem = (event) => {
         event.preventDefault();
-        this.props.dispatch({type: 'POST_SHELF_INFORMATION', payload: this.state.selfItem})
+        this.props.dispatch({type: 'POST_SHELF_INFORMATION', payload: this.state.shelfItem})
         this.setState({
             shelfItem: {
                 description: '',
